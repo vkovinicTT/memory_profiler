@@ -13,6 +13,10 @@ description = "Memory profiler for Tenstorrent hardware - extracts per-op memory
 readme = "README.md"
 license = {text = "Apache-2.0"}
 requires-python = ">=3.8"
+dependencies = [
+    "rich>=13.0.0",
+    "questionary>=2.0.0",
+]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -26,6 +30,7 @@ classifiers = [
 
 [project.scripts]
 tt-memory-profiler = "memory_profiler.run_profiled:main"
+ttmem = "memory_profiler.interactive_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]

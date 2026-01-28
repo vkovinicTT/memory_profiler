@@ -42,6 +42,22 @@ export TTMLIR_RUNTIME_LOGGER_LEVEL=DEBUG
 
 ## Usage
 
+### Interactive CLI (Recommended for Remote Development)
+
+```bash
+ttmem
+```
+
+The interactive CLI guides you through the process with prompts:
+1. Asks if you have a log file ready (shows prerequisites if not)
+2. Prompts for the log file path with autocomplete
+3. Parses the log and generates the HTML report
+4. Optionally starts an HTTP server for remote viewing
+
+When working on a remote machine via VS Code Remote SSH, the HTTP server option allows you to view the report in your local browser. VS Code automatically forwards the port, so `http://localhost:8000/report.html` will work from your local machine.
+
+### Command Line Interface
+
 ```bash
 # Default: run + parse + visualize (recommended)
 tt-memory-profiler path/to/your_model.py
@@ -73,7 +89,21 @@ Output is stored in `./logs/` relative to your current working directory (or `--
 
 ## View Visualization
 
-Right-click on the HTML file and choose "Open with Live Server" (requires the Live Server extension in VS Code).
+**Option 1: Using `ttmem` (recommended for remote development)**
+- Run `ttmem`, select "Yes" when asked to serve via HTTP
+- Open `http://localhost:PORT/report.html` in your browser
+- VS Code Remote SSH automatically forwards the port
+
+**Option 2: Using VS Code Live Server**
+- Right-click on the HTML file and choose "Open with Live Server"
+- Requires the Live Server extension in VS Code
+
+**Option 3: Manual HTTP server**
+```bash
+cd logs/your_model_YYYYMMDD_HHMMSS/
+python -m http.server 8000
+# Open http://localhost:8000/your_model_report.html
+```
 
 ## Features
 

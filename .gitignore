@@ -1,2 +1,4 @@
 # Memory profiler logs directory
 logs/
+__pycache__/
+*.egg-info
