@@ -74,7 +74,7 @@ def analyze_log(log_file: Path, output_dir: Path, script_name: str):
     registry_json = output_dir / f"{script_name}_inputs_registry.json"
 
     try:
-        from parser import parse_log_file, validate_outputs
+        from memory_profiler.parser import parse_log_file, validate_outputs
 
         # Parse the log file
         print("\n" + "=" * 70)
@@ -116,7 +116,7 @@ def generate_visualization(run_dir: Path):
     script_name = "_".join(dir_name.split("_")[:-2]) if "_" in dir_name else "decoder"
 
     try:
-        from visualizer import MemoryVisualizer
+        from memory_profiler.visualizer import MemoryVisualizer
 
         print("=" * 70)
         print("Generating visualization...")

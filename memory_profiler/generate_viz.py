@@ -14,7 +14,7 @@ Usage:
 import sys
 from pathlib import Path
 
-from visualizer import MemoryVisualizer
+from memory_profiler.visualizer import MemoryVisualizer
 
 
 def main():
