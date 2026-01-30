@@ -16,15 +16,7 @@ pip install -e /path/to/memory_profiler
 
 Before using the profiler, you need to configure TT-XLA for memory logging:
 
-### 1. Enable memory logging per operation
-
-Add this line of code at the beginning of the `execute` function in `pjrt_implementation/src/api/flatbuffer_loaded_executable_instance.cc`:
-
-```cpp
-tt::runtime::setMemoryLogLevel(tt::runtime::MemoryLogLevel::Operation);
-```
-
-### 2. Build the project with debug flags
+### 1. Build the project with debug flags
 
 ```bash
 source venv/activate
@@ -34,10 +26,11 @@ cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Debug -DTT_RUNTIME_DEBUG=ON
 cmake --build build
 ```
 
-### 3. Export runtime logger flag
+### 2. Export runtime logger flag (for op and memory info)
 
 ```bash
 export TTMLIR_RUNTIME_LOGGER_LEVEL=DEBUG
+export TT_RUNTIME_MEMORY_LOG_LEVEL=operation
 ```
 
 ## Usage
